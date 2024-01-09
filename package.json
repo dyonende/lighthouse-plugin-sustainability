@@ -1,18 +1,24 @@
 {
-  "name": "lighthouse-plugin-example",
+  "name": "lighthouse-plugin-sus",
   "type": "module",
   "main": "plugin.js",
   "engines": {
     "node": ">=18.16"
   },
   "scripts": {
-    "run-plugin": "NODE_PATH=.. lighthouse --plugins=lighthouse-plugin-example --only-categories=lighthouse-plugin-example --view"
+    "run-plugin": "NODE_PATH=.. lighthouse https://www.tudelft.nl --plugins=lighthouse-plugin-sus --only-categories=lighthouse-plugin-sus"
   },
   "peerDependencies": {
-    "lighthouse": "^11.0.0"
+    "lighthouse": "^11.4.0"
   },
   "devDependencies": {
-    "lighthouse": "^11.0.0"
+    "lighthouse": "^11.4.0"
   },
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@minify-html/node": "^0.11.1",
+    "@minify-js/node": "^0.5.6",
+    "htmlparser2": "^9.0.0",
+    "jsdom": "^23.0.1"
+  }
 }

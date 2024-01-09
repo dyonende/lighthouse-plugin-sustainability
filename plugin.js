@@ -6,13 +6,22 @@
 
 export default {
   // Additional audits to run on information Lighthouse gathered.
-  audits: [{path: 'lighthouse-plugin-example/audits/has-cat-images.js'}],
+  audits: [{path: 'lighthouse-plugin-sus/audits/font-format.js'},{path: 'lighthouse-plugin-sus/audits/typefaces.js'},{path: 'lighthouse-plugin-sus/audits/video-codec.js'},{path: 'lighthouse-plugin-sus/audits/unminified-html.js'}],
 
   // A new category in the report for the plugin output.
   category: {
-    title: 'Cats',
+    title: 'Sustainable Web Design',
     description:
-      'When integrated into your website effectively, cats deliver delight and bemusement.',
-    auditRefs: [{id: 'has-cat-images-id', weight: 1}],
+      'Reducing the energy consumption of a web page leads to a smaller ecological footprint. ',
+    auditRefs: [{id: 'unminified-css', weight: 2},
+		{id: 'unminified-javascript', weight: 4},
+		{id: 'uses-responsive-images', weight: 8},
+		{id: 'uses-optimized-images', weight: 8},
+		{id: 'uses-text-compression', weight: 1},
+		{id: 'unminified-html', weight: 1},
+		{id: 'font-family', weight: 10},
+		{id: 'font-format', weight: 10},
+		{id: 'video-codec', weight: 20},
+		],
   },
 };
