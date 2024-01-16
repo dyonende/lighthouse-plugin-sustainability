@@ -75,7 +75,7 @@ class FontFamily extends Audit {
     const allFonts = FontFamily.findFontFamilyDeclarations(artifacts);
         
     if (allFonts.length == 0){
-	    return {score: null, notApplicable: true};
+	    return {score: 1};
     }
     
     var inWebFontsCounter = 0;

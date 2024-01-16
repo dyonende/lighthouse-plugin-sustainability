@@ -59,7 +59,7 @@ class VideoCodec extends Audit {
 
     return {
       score: modernCodecCounter/videoURLs.size,
-      displayValue: `${videoURLs.size - modernCodecCounter} video(s) can be optimised`
+      displayValue: `${videoURLs.size - modernCodecCounter} of ${videoURLs.size} video(s) can be optimised`
     };
   }
 }

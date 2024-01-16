@@ -86,13 +86,13 @@ class FontFormat extends Audit {
     const results = FontFormat.findFontFormatDeclarations(artifacts);
       
     if (results.counter == 0){
-	    return {score: null, notApplicable: true};
+	    return {score: 1};
     }
     
     const score = results.woff2/results.counter;
     return {
       score: score,
-      displayValue: `${results.counter - results.woff2} font(s) did not use woff2`
+      displayValue: `${results.counter - results.woff2} of ${results.counter} font(s) did not use woff2`
     };
   }
 }

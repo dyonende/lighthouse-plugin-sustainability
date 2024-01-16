@@ -9,6 +9,8 @@ export default {
   audits: [{path: 'lighthouse-plugin-sus/audits/font-format.js'},{path: 'lighthouse-plugin-sus/audits/typefaces.js'},{path: 'lighthouse-plugin-sus/audits/video-codec.js'},{path: 'lighthouse-plugin-sus/audits/unminified-html.js'}],
 
   // A new category in the report for the plugin output.
+  //Scoring based on p. 662 from the [2022 Web Almanac](https://almanac.httparchive.org/en/2022/) by HTTP Archive
+
   category: {
     title: 'Sustainable Web Design',
     description:
