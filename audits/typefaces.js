@@ -8,8 +8,8 @@ import * as i18n from 'lighthouse/core/lib/i18n/i18n.js';
 import {Sentry} from 'lighthouse/core/lib/sentry.js';
 import {NetworkRecords} from 'lighthouse/core/computed/network-records.js';
 
-//https://www.w3schools.com/csSref/css_fonts_fallbacks.php
-const WEB_SAFE_FONTS = ["times new roman", "times", "serif", "georgia", "garamond", "arial", "helvetica", "sans-serif", "tahoma", "verdana","trebuchet ms", "geneva", "courier new", "courier", "monospace", "brush script mt", "cursive", "copperplate", "papyrus", "fantasy"];
+//https://systemfontstack.com/
+const WEB_SAFE_FONTS = ["-apple-system", "avenir next", "avenir", "cantarell", "ubuntu", "roboto", "noto", "serif", "iowan old style", "apple garamond", "baskerville", "droid serif, times", "source serif pro","apple color emoji", "segoe ui emoji", "segoe ui symbol", "mono", "menlo", "consolas", "monaco", "liberation mono", "lucida console", "system-ui", "blinkmacsystemfont", "segoe ui", "open sans", "helvetica neue", "helvetica", "arial", "sans-serif", "times new roman", "times", "serif", "georgia", "garamond", "tahoma", "verdana","trebuchet ms", "geneva", "courier new", "courier", "monospace", "brush script mt", "cursive", "copperplate", "papyrus", "fantasy"];
 
 const UIStrings = {
   /** Title of a diagnostic audit that provides detail on if all the text on a webpage was visible while the page was loading its webfonts. This descriptive title is shown to users when the amount is acceptable and no user action is required. */
@@ -58,7 +58,7 @@ class FontFamily extends Audit {
         var fontFamilyMatch = declaration.match(/font-family\s*:\s*(.*?);/g);
 	fontFamilyMatch = fontFamilyMatch[0].slice(12, -1).replaceAll('"', '');
 	fontFamilyMatch = fontFamilyMatch.split(',');
-	fontTypes.add(fontFamilyMatch[0])
+	fontTypes.add(fontFamilyMatch[0].toLowerCase())
       }
     }
     return fontTypes;
@@ -74,8 +74,8 @@ class FontFamily extends Audit {
     const networkRecords = await NetworkRecords.request(devtoolsLogs, context);
     const allFonts = FontFamily.findFontFamilyDeclarations(artifacts);
         
-    if (allFonts.length == 0){
-	    return {score: 1};
+    if (allFonts.size == 0){
+	    return {score: 1, numericValue: 0, numericUnit: "fonts"};
     }
     
     var inWebFontsCounter = 0;
@@ -87,9 +87,13 @@ class FontFamily extends Audit {
     
     const finalScore = inWebFontsCounter/allFonts.size;
     
+    const safeFonts = allFonts.size - inWebFontsCounter;
+    
     return {
       score: finalScore,
-      displayValue: `${allFonts.size - inWebFontsCounter} font(s) are not web safe`
+      numericValue: safeFonts,
+      numericUnit: "font",
+      displayValue: `${safeFonts} of ${allFonts.size} font(s) are not web safe`
     };
   }
 }

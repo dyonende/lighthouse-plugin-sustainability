@@ -53,13 +53,16 @@ class VideoCodec extends Audit {
     }
     
     if (videoURLs.size == 0 ){
-	    return {score: null, notApplicable: true};
+	    return {score: null, notApplicable: true, numericValue: 0, numericUnit: "video"};
     }
    
-
+    const nonOptimisedCodes = videoURLs.size - modernCodecCounter;
+    
     return {
       score: modernCodecCounter/videoURLs.size,
-      displayValue: `${videoURLs.size - modernCodecCounter} of ${videoURLs.size} video(s) can be optimised`
+      numericValue: nonOptimisedCodes,
+      numericUnit: "video",
+      displayValue: `${nonOptimisedCodes} of ${videoURLs.size} video(s) can be optimised`
     };
   }
 }

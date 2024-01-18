@@ -41,12 +41,21 @@
   dependencies:
     tslib "^2.4.0"
 
-"@minify-html/node@^0.11.1":
-  version "0.11.1"
-  resolved "https://registry.npmjs.org/@minify-html/node/-/node-0.11.1.tgz"
-  integrity sha512-f+3VvBszFaY5xx8e7POka1K1FnVZur8Apk18uaI4lSyZrzmpLlkSBZfXOPHVhChFc0TDI+RQuBD+ws4qIt9+mg==
-  dependencies:
-    cargo-cp-artifact "^0.1"
+"@minify-html/node-linux-x64@0.11.5":
+  version "0.11.5"
+  resolved "https://registry.npmjs.org/@minify-html/node-linux-x64/-/node-linux-x64-0.11.5.tgz"
+  integrity sha512-IUSgYqJ/iMOV1wQPCFnUyWkdpV34yVb1CWb3j7GR1p7GpPX8wCu1SKDe397eZHEACRLQma6pKIdubL5cd1wRQA==
+
+"@minify-html/node@^0.11.5":
+  version "0.11.5"
+  resolved "https://registry.npmjs.org/@minify-html/node/-/node-0.11.5.tgz"
+  integrity sha512-xKsoUL7irhsf46hxEWe//ppqE5ehsQtxCMf7qnfhdp8rC2bkPAf5dbZaIwPDj94pWLMRl+HVOg2ECUban7XB7w==
+  optionalDependencies:
+    "@minify-html/node-darwin-arm64" "0.11.5"
+    "@minify-html/node-darwin-x64" "0.11.5"
+    "@minify-html/node-linux-arm64" "0.11.5"
+    "@minify-html/node-linux-x64" "0.11.5"
+    "@minify-html/node-win32-x64" "0.11.5"
 
 "@minify-js/node@^0.5.6":
   version "0.5.6"

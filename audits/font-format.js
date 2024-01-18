@@ -86,13 +86,16 @@ class FontFormat extends Audit {
     const results = FontFormat.findFontFormatDeclarations(artifacts);
       
     if (results.counter == 0){
-	    return {score: 1};
+	    return {score: 1, numericValue: 0, numericUnit: "fonts"};
     }
     
     const score = results.woff2/results.counter;
+    const modernFontFormats = results.counter - results.woff2;
     return {
       score: score,
-      displayValue: `${results.counter - results.woff2} of ${results.counter} font(s) did not use woff2`
+      numericValue: modernFontFormats,
+      numericUnit: "font",
+      displayValue: `${modernFontFormats} of ${results.counter} font(s) did not use woff2`
     };
   }
 }

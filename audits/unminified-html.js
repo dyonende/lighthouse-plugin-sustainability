@@ -69,6 +69,8 @@ class UnminifiedHTML extends Audit {
 	  
     return {
       score: score,
+      numericValue: result.wastedBytes,
+      numericUnit: "byte",
       displayValue: `Potential savings of ${wastedKiB} KiB`,
     };
   }
