@@ -15,4 +15,4 @@ This plugin for Google Lighthouse is part of the Master's thesis [Green Patterns
 | Text-compression  | Ensure that resources loaded with gzip/br/deflate compression                                                       | ❎   |
 
 Running the plugin can be done with
-`NODE_PATH=.. npx lighthouse -- https://example.com --plugins=lighthouse-plugin-example --only-categories=lighthouse-plugin-example --view`.
+`NODE_PATH=.. npx lighthouse -- https://example.com --plugins=lighthouse-plugin-sustainability --view`.
